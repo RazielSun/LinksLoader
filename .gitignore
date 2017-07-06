@@ -1,0 +1,14 @@
+#####
+# OS X temporary files that should never be committed
+
+.DS_Store
+*.DS_Store
+*.swp
+*.lock
+.profile
+*.apk
+*.txt
+*.jpg
+
+images/
+links/
