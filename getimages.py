@@ -36,22 +36,28 @@ def load_image( folder, path ):
 		
 
 # ------------------------------------------------------------ #
-def get_data( filename ):
+def get_data( filename, skip ):
 	check_folder(filename)
 
+	index = 0
 	with open('links/{}.txt'.format(filename)) as f:
 	    lines = f.readlines()
 	    for line in lines:
-	    	load_image(filename, line.rstrip('\n'))
+	    	index += 1
+	    	if index >= skip:
+		    	load_image(filename, line.rstrip('\n'))
 
 # ------------------------------------------------------------ #
 def main( argv ):
 	total = len( argv )
+	skip = 0
 	filename = None
 	if total > 1:
 		filename = argv[1]
+	if total > 2:
+		skip = int(argv[2])
 	if filename:
-		get_data(filename)
+		get_data(filename, skip)
 
 # ------------------------------------------------------------ #
 #  Main  #
